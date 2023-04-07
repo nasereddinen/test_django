@@ -44,7 +44,7 @@ workon projet_test
 ```sh
 pip install -r requirements.txt
 ```
-### Start the project
+### Lancer le Projet
 
 apres le changement necessaires (collectstatic and migrations) excuter la command:
 
@@ -63,6 +63,7 @@ python manage.py runserver
 ├── templates
 
 ```
+### Pour les fontion de remplissage de dyneff et total energy 
 
 
 
