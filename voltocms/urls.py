@@ -10,4 +10,5 @@ urlpatterns = [
     path('energy_company_counter/<int:company_id>/', views.GetEnergyCounterWithCompanyView.as_view(), name="get_energy_counter"),
     path('energy_account_counter/<int:account_id>/', views.GetEnergyCounterWithAccountView.as_view(), name="get_energy_couter_with_account"),
     path('add_contract/', views.CalculateEnergyConsumptionView.as_view(), name="add_contract"),
+    path('add_file/', views.AddFilesView.as_view(), name="add_file"),
 ]
