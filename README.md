@@ -64,6 +64,8 @@ python manage.py runserver
 
 ```
 ### Pour les fontion de remplissage de dyneff et total energy 
+-j'ai l'ajouter dans un api pour reduire l'occurence des donnees dans la db
+-vous pouvez trouvez les visualisation avec matplotlib et pandas et bs4 dans l'appliction /visualisation.
 
 
 
