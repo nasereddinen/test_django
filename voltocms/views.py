@@ -16,12 +16,13 @@ from rest_framework.views import APIView
 from rest_framework.permissions import AllowAny
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from .utils import remplir_dyneff,xmlremp_total,calculate_energy_consumption
+from .utils import (
+    remplir_dyneff,
+    xmlremp_total,
+    calculate_energy_consumption)
 
-# pour remplir la table dyneff avec les valeurs de la fichier csv
-remplir_dyneff()
-# pour remplir la table total avec les valeurs de la fichier xml
-xmlremp_total()
+
+
 
 class CreateCompanyView(GenericAPIView):
     """
@@ -166,27 +167,18 @@ class CalculateEnergyConsumptionView(APIView):
         return Response(result, status=200)
     
 
-class AddContractView(GenericAPIView):
+class AddFilesView(GenericAPIView):
     """
     class RegisterationView pour l'enregistrement d'utilisateur
     """
-    serializer_class = ContratSerializer
-    permission_classes = (IsAuthenticated,)
     
 
-    def post(self, request):
-        serializer = self.serializer_class(data=request.data)
-        if serializer.is_valid(raise_exception=True):
-            contract_id = serializer.save()
-            contract = get_object_or_404(EnergyHistory, pk=contract_id)
-            result = calculate_energy_consumption(
-                     contract.date,
-                     contract.compteur.numero,
-                     contract.compteur.consumption,
-                     contract.company.siret,
-                     contract.company.elec_price,
-                     contract.company.gaz_price)
-            return Response(serializer.data, status=200)
-        else:
-            return Response(serializer.errors, status=400)
+    def get(self, request):
+        # pour remplir la table dyneff avec les valeurs de la fichier csv
+        remplir_dyneff()
+        # pour remplir la table total avec les valeurs de la fichier xml
+        xmlremp_total()
+        return Response("Remplissage ok", status=200)
+        
+        
 
