@@ -10,7 +10,6 @@ Pour installer le projet suivre les etapes suivants:
 ```sh
 git clone <URL>
 ```
-you have to install the project in a zip format and then initialize the .git inside the project
 
 
 
